@@ -1,15 +1,27 @@
-Zebpay primarily deals with Cryptocurrencies (Having its two main products as cryptoexchange and wallet). Since majority of tokens and cryptocurrencies are themselves based on public blockchains I would explain how switching to a different consensus mechanism can greatly affect fault tolerance, availibility and high workload.
+Zebpay primarily deals with Cryptocurrencies (Having its two main products as cryptoexchange and wallet).
+Since majority of tokens and cryptocurrencies are themselves based on public blockchains,
+I would explain how switching to a different consensus mechanism can greatly affect fault tolerance, availibility and high workload.
 Currently both the Bitcoin and Ethereum(plans to switch to Proof of stake(Pos) consensus protocol) use Proof of work (Pow)
-The above mentioned blockchains try to reach Byzantine Fault Tolerance(BFT) through PoW. Now achieving BFT in a distributed system is a very energy consuming process and makes the blockchain difficult to scale and reduces its throughput.
-One alternative to BFT is using Practical Byzantine Fault Tolerance (PBFT) which improves on the many key areas mentioned above, since there is no need to validate each transaction as all the nodes of the network are in consensus on the overall state of the network. However, PBFT requires high level of communication between the nodes, which leads to the limitations in terms of the size of the network that can be well governed with PBFT.
+The above mentioned blockchains try to reach Byzantine Fault Tolerance(BFT) through PoW.
+Now achieving BFT in a distributed system is a very energy consuming process and makes the blockchain difficult to scale and reduces its throughput.
 
+One alternative to BFT is using Practical Byzantine Fault Tolerance (PBFT) which improves on the many key areas mentioned above, 
+since there is no need to validate each transaction as all the nodes of the network are in consensus on the overall state of the network.
+However, PBFT requires high level of communication between the nodes, which leads to the limitations in terms of the size of the network that can be well governed with PBFT.
 The maximum number of messages required between nodes to reach a consensus can be calculated by using :
-M = 1 + 3f + 3f² + (3f)(3f+1) + 3f+1,
-where f is the number of allowable faulty nodes given network size N. 
-So for a network of 7 nodes that would allow for 2 faulty/bad nodes, PBFT requires a min of 92 messages. For 10 nodes 191 messages and for 40 nodes 3,161 messages. And this needs to be repeated for every block that is created.
 
-Now we know the key areas which can be improved in order to make blockchains more scalable and lower the energy barrier which hinders the  adoption of blockchain in the mainstream technologies. 
-In order to deal with these problems we can instead use the Simplified Byzantine Fault Tolerance (SBFT). In comparasion to PBFT the SBFT only requires a third of the messages to be sent to achieve consensus. The message count in case of SBFT can be calculated by:
+M = 1 + 3f + 3f² + (3f)(3f+1) + 3f+1,
+
+where f is the number of allowable faulty nodes given network size N. 
+So for a network of 7 nodes that would allow for 2 faulty/bad nodes, PBFT requires a min of 92 messages.
+For 10 nodes 191 messages and for 40 nodes 3,161 messages. And this needs to be repeated for every block that is created.
+
+Now we know the key areas which can be improved in order to make blockchains more scalable and lower the energy barrier,
+which hinders the adoption of blockchain in the mainstream technologies. 
+In order to deal with these problems we can instead use the Simplified Byzantine Fault Tolerance (SBFT).
+In comparasion to PBFT the SBFT only requires a third of the messages to be sent to achieve consensus. The message count in case of SBFT can be calculated by:
+
 M = (3f+1)(2f+1) + 1,
+
 So for a network of 7 nodes, we require 36 messages. For 10 nodes 71 and for 40 nodes 1,081.
 Hence, unlike using PBFT which is suitable for only smaller networks having tens of nodes. Whereas SBFT can be easily used for hundreds of nodes and can help in early adoption of blockchains.
